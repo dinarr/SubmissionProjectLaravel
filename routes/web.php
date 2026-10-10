@@ -76,3 +76,5 @@ Route::permanentRedirect('/katalog-lama', '/info');
 Route::fallback(function () {
 return response('Maaf, halaman yang Anda cari tidak tersedia.', 404);
 });
+
+//dinar baik 
