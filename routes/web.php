@@ -78,3 +78,33 @@ return response('Maaf, halaman yang Anda cari tidak tersedia.', 404);
 });
 
 //dinar baik 
+
+use App\Http\Controllers\ProdukController;
+
+Route::get('/produk', [ProdukController::class, 'index'])
+    ->name('produk.index');
+
+Route::get('/produk/{id}', [ProdukController::class, 'show'])
+    ->name('produk.show');
+
+
+use App\Http\Controllers\MahasiswaController;
+
+Route::get('/', function () {
+    return redirect('/mahasiswa');
+});
+
+Route::get('/profil', [
+    MahasiswaController::class,
+    'profil'
+])->name('mahasiswa.profil');
+
+Route::get('/mahasiswa', [
+    MahasiswaController::class,
+    'index'
+])->name('mahasiswa.index');
+
+Route::get('/mahasiswa/{nim}', [
+    MahasiswaController::class,
+    'show'
+])->name('mahasiswa.show');   
