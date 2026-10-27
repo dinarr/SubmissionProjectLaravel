@@ -87,7 +87,10 @@ Route::get('/produk', [ProdukController::class, 'index'])
 Route::get('/produk/{id}', [ProdukController::class, 'show'])
     ->name('produk.show');
 
-
+/*Route::get('/produk/{id}', function($id){
+    return 'produk #' . id;
+});
+*/
 use App\Http\Controllers\MahasiswaController;
 
 Route::get('/', function () {
@@ -108,3 +111,5 @@ Route::get('/mahasiswa/{nim}', [
     MahasiswaController::class,
     'show'
 ])->name('mahasiswa.show');   
+
+//public index 
