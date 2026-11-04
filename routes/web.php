@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JurusanController;
+
 
 Route::get('/', function () {
     return view('welcome', [
@@ -73,10 +75,6 @@ Route::redirect('/home', '/');
 
 Route::permanentRedirect('/katalog-lama', '/info');
 
-Route::fallback(function () {
-return response('Maaf, halaman yang Anda cari tidak tersedia.', 404);
-});
-
 //dinar baik 
 
 use App\Http\Controllers\ProdukController;
@@ -113,3 +111,11 @@ Route::get('/mahasiswa/{nim}', [
 ])->name('mahasiswa.show');   
 
 //public index 
+
+Route::get('/jurusan', [JurusanController::class, 'index']);
+
+Route::get('/jurusan/{id}', [JurusanController::class, 'show']);
+
+Route::fallback(function () {
+return response('Maaf, halaman yang Anda cari tidak tersedia.', 404);
+});
