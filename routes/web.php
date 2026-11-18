@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JurusanController;
-
+use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\MatakuliahController;
 
 Route::get('/', function () {
     return view('welcome', [
@@ -89,7 +90,6 @@ Route::get('/produk/{id}', [ProdukController::class, 'show'])
     return 'produk #' . id;
 });
 */
-use App\Http\Controllers\MahasiswaController;
 
 Route::get('/', function () {
     return redirect('/mahasiswa');
@@ -119,3 +119,28 @@ Route::get('/jurusan/{id}', [JurusanController::class, 'show']);
 Route::fallback(function () {
 return response('Maaf, halaman yang Anda cari tidak tersedia.', 404);
 });
+
+Route::get('/jurusan',[JurusanController::class,'index'])
+->name('jurusan.index');
+
+Route::get('/jurusan/create',[JurusanController::class,'create'])
+->name('jurusan.create');
+
+Route::post('/jurusan', [JurusanController::class, 'store'])
+->name('jurusan.store');
+
+// Menampilkan daftar mata kuliah
+Route::get('/matakuliah', [MatakuliahController::class, 'index'])
+    ->name('matakuliah.index');
+
+// Form tambah mata kuliah
+Route::get('/matakuliah/create', [MatakuliahController::class, 'create'])
+    ->name('matakuliah.create');
+
+// Menyimpan data mata kuliah
+Route::post('/matakuliah', [MatakuliahController::class, 'store'])
+    ->name('matakuliah.store');
+
+// Menampilkan detail mata kuliah
+Route::get('/matakuliah/{id}', [MatakuliahController::class, 'show'])
+    ->name('matakuliah.show');
